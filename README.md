@@ -1,5 +1,5 @@
 [![Build Status](https://secure.travis-ci.org/soldair/node-binarysearch.png)](https://github.com/pooyahatami/Algorithm-Sort-Bucket/)
-# Algorithm-Sort-Bucket
+# Algorithm-Sort-Bucket (or bin sort)
 
 ## About Bucket Sort 
 Bucket sort is mainly useful when input is uniformly distributed over a range. For example, consider the following problem. 
@@ -9,10 +9,10 @@ Sort a large set of floating point numbers which are in range from 0.0 to 1.0 an
  * Bucket sort algorithm ! (or bin sort)
  * Class	Sorting algorithm
  * Data structure	Array
- * Worst-case performance	O(n) 
- * Best-case performance	O(n) 
- * Average performance	О(n) 
- * Worst-case space complexity
+ * Worst-case performance	O(n^{2}) 
+ * Best-case performance	\Omega (n+k) 
+ * Average performance	\Theta (n+k) 
+ * Worst-case space complexity O(n\cdot k)
  *   where n is the size of the input array.
  *   Note: Bucket sort can be seen as a generalization of counting sort; in fact, if each bucket has size 1 then 
  *         bucket sort degenerates to counting sort. The variable bucket size of bucket sort allows it to use O(n) 
@@ -23,6 +23,7 @@ Sort a large set of floating point numbers which are in range from 0.0 to 1.0 an
  ```
 A simple way is to apply a comparison based sorting algorithm. The lower bound for Comparison based sorting algorithm (Merge Sort, Heap Sort, Quick-Sort .. etc) is Ω(n Log n), i.e., they cannot do better than nLogn.
 Can we sort the array in linear time? Counting sort can not be applied here as we use keys as index in counting sort. Here keys are floating point numbers. 
+
 The idea is to use bucket sort. Following is bucket algorithm.
 
 **bucketSort(arr[], n)**
@@ -39,8 +40,8 @@ Following diagram (taken from CLRS book) demonstrates working of bucket sort.
 
 ## Ruls :
 ```js
-var rectbs = require('./node-sort-bead');
-var result = rectbs.beadSort(inputArray);
+var rectbs = require('./node-sort-bucket');
+var result = rectbs.bucket(inputArray);
 ```
  * Sort Array of integers (Decimal Base 10 , Hex Base 16 , Octal Base 8 , Binary Base 2 ).
  * Array's element shoud be integers and not beager than 999,999 .
@@ -132,86 +133,52 @@ int main()
 ```
 Following is Java implementation of the above algorithm.
 ```java
-// Bead sort Java implementation
-public class BeadSort
-{
-	public static void main(String[] args)
-	{
-		BeadSort now=new BeadSort();
-		int[] arr=new int[(int)(Math.random()*11)+5];
-		for(int i=0;i<arr.length;i++)
-			arr[i]=(int)(Math.random()*10);
-		System.out.print("Unsorted: ");
-		now.display1D(arr);
+// Bucket sort Java implementation
+public void bucketsort(int[] input) {
+  //get hash codes
+  final int[] code = hash(input);
+  //create and initialize buckets to ArrayList: O(n)
+  List<Integer>[] buckets = new List[code[1]];
+  for (int i = 0; i < code[1]; i++) {
+    buckets[i] = new ArrayList<Integer>();
+  }
+  //distribute data into buckets: O(n)
+  for (int i : input) {
+    buckets[hash(i, code)].add(i);
+  }
+  /**
+   * Sort each bucket: O(n).
+   * I mentioned above that the worst case for bucket sort is counting
+   * sort. That's because in the worst case, bucket sort may end up
+   * with one bucket per key. In such case, sorting each bucket would
+   * take 1^2 = O(1). Even after allowing for some probabilistic
+   * variance, to sort each bucket would still take 2-1/n, which is
+   * still a constant. Hence, sorting all the buckets takes O(n).
+   ***/
+  for (List bucket : buckets) {
+    Collections.sort(bucket);
+  }
+  int ndx = 0;
+  //merge the buckets: O(n)
+  for (int b = 0; b < buckets.length; b++) {
+    for (int v : buckets[b]) {
+      input[ndx++] = v;
+    }
+  }
+}
  
-		int[] sort=now.beadSort(arr);
-		System.out.print("Sorted: ");
-		now.display1D(sort);
-	}
-	int[] beadSort(int[] arr)
-	{
-		int max=0;
-		for(int i=0;i<arr.length;i++)
-			if(arr[i]>max)
-				max=arr[i];
+private int[] hash(int[] input) {
+  int m = input[0];
+  for (int i = 1; i < input.length; i++) {
+    if (m < input[i]) {
+      m = input[i];
+    }
+  }
+  return new int[]{m, (int) Math.sqrt(input.length)};
+}
  
-		//Set up abacus
-		char[][] grid=new char[arr.length][max];
-		int[] levelcount=new int[max];
-		for(int i=0;i<max;i++)
-		{
-			levelcount[i]=0;
-			for(int j=0;j<arr.length;j++)
-				grid[j][i]='_';
-		}
-		/*
-		display1D(arr);
-		display1D(levelcount);
-		display2D(grid);
-		*/
- 
-		//Drop the beads
-		for(int i=0;i<arr.length;i++)
-		{
-			int num=arr[i];
-			for(int j=0;num>0;j++)
-			{
-				grid[levelcount[j]++][j]='*';
-				num--;
-			}
-		}
-		System.out.println();
-		display2D(grid);
-		//Count the beads
-		int[] sorted=new int[arr.length];
-		for(int i=0;i<arr.length;i++)
-		{
-			int putt=0;
-			for(int j=0;j<max&&grid[arr.length-1-i][j]=='*';j++)
-				putt++;
-			sorted[i]=putt;
-		}
- 
-		return sorted;
-	}
-	void display1D(int[] arr)
-	{
-		for(int i=0;i<arr.length;i++)
-			System.out.print(arr[i]+" ");
-		System.out.println();
-	}
-	void display1D(char[] arr)
-	{
-		for(int i=0;i<arr.length;i++)
-			System.out.print(arr[i]+" ");
-		System.out.println();
-	}
-	void display2D(char[][] arr)
-	{
-		for(int i=0;i<arr.length;i++)
-			display1D(arr[i]);
-		System.out.println();
-	}
+private int hash(int i, int[] code) {
+  return (int) ((double) i / code[0] * (code[1] - 1));
 }
 /* This code is contributed by Pooya Hatami*/
 ```
