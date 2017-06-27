@@ -1,23 +1,23 @@
  /*
- * Bead sort algorithm !
+ * Bucket sort algorithm ! (or bin sort)
  * Class	Sorting algorithm
  * Data structure	Array
- * Worst-case performance	О(s) comparisons, S is the sum of the input integers
- * Best-case performance	O(1) comparisons, O(1) swaps
- * Average performance	О(n) comparisons, swaps
- * Worst-case space complexity
+ * Worst-case performance	O(n^{2}) 
+ * Best-case performance	\Omega (n+k) 
+ * Average performance	\Theta (n+k) 
+ * Worst-case space complexity O(n\cdot k)
  *   where n is the size of the input array.
- *   ans S S is the sum of the input integers.
- *   Note: The algorithm’s run–time complexity ranges from O(1) to O(S) (S is
- *         the sum of the input integers) depending on the user’s perspective.
- *        Finally, three possible implementations are suggested.
+ *   Note: Bucket sort can be seen as a generalization of counting sort; in fact, if each bucket has size 1 then 
+ *         bucket sort degenerates to counting sort. The variable bucket size of bucket sort allows it to use O(n) 
+ *         memory instead of O(M) memory, where M is the number of distinct values; in exchange, it gives up 
+ *         counting sort's O(n + M) worst-case behavior.
  *
  * Author: Pooya Hatami
  */
 
-var rectbs = require('./node-sort-bead');
+var rectbs = require('./node-sort-bucket');
 
-var arrin00 = [20, 8 , 8, 12, 22 , 9 , 10 ];
+var arrin00 = [20, 8 , 11, 12, 22 , 9 , 10 ];
 var arrin01 = [20, 8 , 48, 120, 220 , 390 , 1000 ];
 var arrin02 = [20, 8 , 480 , 120, 220 , 390 , 1000 ];
 var arrin03 = [1120, 800 , 480 , 120, 20 , 390 , 1000 ];
@@ -31,11 +31,14 @@ var arrin07 = [1, 3, 7000000000000000000, 25, 12, 9, 8,
                       121, 221, 100000000000000000000000000 , 18, 290000000000000000000, 49];
 var arrin08 = [1, 3, 75432, 25, 12, 9, 8,
                       121, 221, 976562 , 18, 299999, 49];
+var arrin09 = [0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434 , 0.611 , 0.621 ];
+var arrin10 = [1,342, 14,293 , 0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434 , 0.611 , 0.621 ];
+var arrin11 = [5, 8 , 11, 12, 2 , 9 , 10 , 4 , 11, 10, 12, 7, 9 ];
 
 
-function solveBS(arr) {
+function solveBS(arr,ibucket) {
     var arr_original = arr.toString() ;
-    var result = rectbs.beadSort(arr);
+    var result = rectbs.bucketSort(arr,ibucket);
     if (result==-1){
     console.log("Fail attempt to sort array \r\n  ["+arr_original+" ] by Insertion Sort " );
     } else {
@@ -46,7 +49,9 @@ function solveBS(arr) {
    console.log("----------------------------------------------------------");     
 }
 
-solveBS(arrin00);
-solveBS(arrin05);
-solveBS(arrin03);
-solveBS(arrin08);
+solveBS(arrin09,10);
+solveBS(arrin00,10);
+solveBS(arrin10,10);
+solveBS(arrin11,10);
+// solveBS(arrin03);
+// solveBS(arrin08);
