@@ -5,7 +5,7 @@
  * Worst-case performance	O(n^{2}) 
  * Best-case performance	\Omega (n+k) 
  * Average performance	\Theta (n+k) 
- * Worst-case space complexity O(n\cdot k)
+ * Worst-case space complexity O(n.k)
  *   where n is the size of the input array.
  *   Note: Bucket sort can be seen as a generalization of counting sort; in fact, if each bucket has size 1 then 
  *         bucket sort degenerates to counting sort. The variable bucket size of bucket sort allows it to use O(n) 
@@ -49,9 +49,7 @@ function solveBS(arr,ibucket) {
    console.log("----------------------------------------------------------");     
 }
 
-solveBS(arrin09,10);
-solveBS(arrin00,10);
-solveBS(arrin10,10);
-solveBS(arrin11,10);
-// solveBS(arrin03);
-// solveBS(arrin08);
+solveBS(arrin09);
+solveBS(arrin00);
+solveBS(arrin10);
+solveBS(arrin11);
