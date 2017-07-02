@@ -40,8 +40,16 @@ Following diagram (taken from CLRS book) demonstrates working of bucket sort.
 
 ## Ruls :
 ```js
-var rectbs = require('./node-sort-bucket');
-var result = rectbs.bucket(inputArray);
+var nodesort = require('./node-sort-bucket');
+nodesort(inputArray, function(err,sortRef) {
+        if (err) {
+            // TODO error handeling 
+            }
+	      else {
+           var result = sortRef.bucketSort(inputArray);
+           // TODO output 
+	            }
+    });
 ```
  * Sort Array of integers (Decimal Base 10 , Hex Base 16 , Octal Base 8 , Binary Base 2 ).
  * Array's element shoud be integers and not beager than 999,999 .
@@ -49,9 +57,9 @@ var result = rectbs.bucket(inputArray);
 
 ## example
 ```js
-var rectbs = require('./node-sort-bead');
+var nodesort = require('./node-sort-bucket');
 
-var arrin00 = [20, 8 , 8, 12, 22 , 9 , 10 ];
+var arrin00 = [20, 8 , -11, 12, 22 , 9 , 10 ];
 var arrin01 = [20, 8 , 48, 120, 220 , 390 , 1000 ];
 var arrin02 = [20, 8 , 480 , 120, 220 , 390 , 1000 ];
 var arrin03 = [1120, 800 , 480 , 120, 20 , 390 , 1000 ];
@@ -64,26 +72,39 @@ var arrin06 = [1, 3, -7, 25, 12, 9, 8,
 var arrin07 = [1, 3, 7000000000000000000, 25, 12, 9, 8,
                       121, 221, 100000000000000000000000000 , 18, 290000000000000000000, 49];
 var arrin08 = [1, 3, 75432, 25, 12, 9, 8,
-                      121, 221, 976562 , 18, 290000, 49];
+                      121, 221, 976562 , 18, 299999, 49];
+var arrin09 = [0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434 , 0.611 , 0.621 ];
+var arrin10 = [1,342, 14,293 , 0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434 , 0.611 , 0.621 ];
+var arrin11 = [5, 8 , 11, 12, 2 , 9 , 10 , 4 , 11, 10, 12, 7, 9 ];
+var arrin12 = "";
 
 
-function solveBS(arr) {
-    var arr_original = arr.toString() ;
-    var result = rectbs.beadSort(arr);
-    if (result==-1){
-    console.log("Fail attempt to sort array \r\n  ["+arr_original+" ] by Insertion Sort " );
-    } else {
-    console.log("Success attempt to sort array \r\n \t ["+arr_original+" ] \r\n and result is : \r\n \t [ "
+function solveSorting(inputArray) {
+    var arr_original = inputArray.toString() ;
+    var sortedArray = inputArray;
+
+    nodesort(inputArray, function(err,sortRef) {
+        if (err) {
+	         console.log(err);
+	                }
+	      else {
+           var result = sortRef.bucketSort(inputArray);
+	         console.log("Success attempt to sort array \r\n \t ["+arr_original+" ] \r\n and result is : \r\n \t [ "
                 + result + " ]" );
-    }
-   
-   console.log("----------------------------------------------------------");     
-}
+  
+	      sortedArray = result;
+	            }
+	      console.log("----------------------------------------------------------"); 
+    });
+    
+    return sortedArray;
+};
 
-solveBS(arrin00);
-solveBS(arrin05);
-solveBS(arrin03);
-solveBS(arrin08);
+solveSorting(arrin09);
+solveSorting(arrin00);
+solveSorting(arrin10);
+solveSorting(arrin11);
+solveSorting(arrin12);
 ```
 
 Following is C++ implementation of the above algorithm.
