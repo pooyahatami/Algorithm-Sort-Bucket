@@ -15,7 +15,7 @@
  * Author: Pooya Hatami
  */
  
- module.exports = function(inputArray,callback) {
+ module.exports = function(inputArray, displaymode, callback) {
   try {
     var code = maxsqrt(inputArray);   // code[0] : max element Code[1] : bucket size square of lenght // code[2] array lenght // code[3] min element 
     if (displaymode=="Yes") console.log("max",code[0],"lenght square",code[1],"array lenght",code[2],"min",code[3]);
@@ -58,7 +58,7 @@
 //   else return bs(inputArray,code);
 // }
 
-var displaymode = "Yess"; //"Yes";
+var displaymode = "No"; // by defualt No details display 
 
 // Merges two subarrays of arr[].
 // First subarray is arr[l..m]
