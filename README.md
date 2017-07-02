@@ -17,7 +17,7 @@ Sort a large set of floating point numbers which are in range from 0.0 to 1.0 an
  *   Note: Bucket sort can be seen as a generalization of counting sort; in fact, if each bucket has size 1 then 
  *         bucket sort degenerates to counting sort. The variable bucket size of bucket sort allows it to use O(n) 
  *         memory instead of O(M) memory, where M is the number of distinct values; in exchange, it gives up 
- *         counting sort's O(n + M) worst-case behavior.
+ *         counting sort`s O(n + M) worst-case behavior.
  *
  * Author: Pooya Hatami
  ```
