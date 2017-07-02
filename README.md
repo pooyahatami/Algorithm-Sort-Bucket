@@ -61,7 +61,7 @@ nodesort(inputArray, displaymode, function(err,sortRef) {
  var displaymode = "No"; //"Yes";
  ```
 
-## example
+## Example
 ```js
 var nodesort = require('./node-sort-bucket');
 
