@@ -36,9 +36,25 @@ The idea is to use bucket sort. Following is bucket algorithm.
 ```
 
 Following diagram (taken from CLRS book) demonstrates working of bucket sort.
-![Bucket Sort](https://github.com/pooyahatami/Algorithm-Sort-Bucket/blob/master/img/BucketSort.png)
+![Bucket Sort](https://raw.githubusercontent.com/pooyahatami/Algorithm-Sort-Bucket/master/img/BucketSort.png)
 
-## Ruls :
+
+Installation
+
+If you are using a browser, you can download **node-sort-bucket.js** from GitHub or just bellow hotlink to it:
+
+```js
+<script src="https://raw.githubusercontent.com/pooyahatami/Algorithm-Sort-Bucket/master/node-sort-bucket.js"></script>
+```
+
+If you are using node, you can install **node-sort-bucket** with npm.
+
+```
+npm install node-sort-bucket
+```
+
+
+## Usage :
 ```js
 var nodesort = require('./node-sort-bucket');
 var displaymode = "No"; //"Yes";  // "Yes" for more details of algorithm progress 
@@ -53,6 +69,8 @@ nodesort(inputArray, displaymode, function(err,sortRef) {
 	            }
     });
 ```
+
+## Ruls :
  * Sort Array of integers (Decimal Base 10 , Hex Base 16 , Octal Base 8 , Binary Base 2 ).
  * Array's element shoud be integers and not beager than 999,999 .
  * Returns the Sorted Array or -1 if not found valid input.
