@@ -36,8 +36,10 @@
         		  return ms(inputArray,0,code[2]-1);
 			},
             binSort:function () {
-              if (displaymode=="Yes") console.log("Sorting Array",inputArray,"with bucketSort which is the same as binSort!");
-        		  return bs(inputArray,code);
+              if (code[3] < 0 ) throw new Error("Negative element are not accepted ! for Bucket Sort.");
+              if (displaymode=="Yes") console.log("Sorting Array",inputArray,"with bucketSort");
+        		  if (code[0]<=0) return bsfractions(inputArray,10,code[2]);
+              else return bs(inputArray,code);
 			}
     });
   }
