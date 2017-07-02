@@ -53,9 +53,9 @@ nodesort(inputArray, displaymode, function(err,sortRef) {
 ```
 
 ## Ruls :
- * Sort Array of integers (Decimal Base 10 , Hex Base 16 , Octal Base 8 , Binary Base 2 ).
+ * Sort Array of integers 
  * Array's element shoud be integers and not beager than 999,999 .
- * Returns the Sorted Array or -1 if not found valid input.
+ * Returns error mesage if not found valid input.
  * Turn On details of Algorithms progress useing : displaymode = "Yes"  
  ```js
  var displaymode = "No"; //"Yes";
