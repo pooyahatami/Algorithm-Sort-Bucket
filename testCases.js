@@ -46,7 +46,7 @@ function solveSorting(inputArray) {
 	         console.log(err);
 	                }
 	      else {
-           //var result = sortRef.mergeSort(inputArray);
+           //var result = sortRef.binSort(inputArray);   // binSort is the same as bucketSort
            var result = sortRef.bucketSort(inputArray);
 	         console.log("Success attempt to sort array \r\n \t ["+arr_original+" ] \r\n and result is : \r\n \t [ "
                 + result + " ]" );
