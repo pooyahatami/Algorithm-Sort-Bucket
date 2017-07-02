@@ -16,6 +16,7 @@
  */
 
 var nodesort = require('./node-sort-bucket');
+var displaymode = "No"; //"Yes";  // "Yes" for more details of algorithm progress 
 
 var arrin00 = [20, 8 , -11, 12, 22 , 9 , 10 ];
 var arrin01 = [20, 8 , 48, 120, 220 , 390 , 1000 ];
@@ -41,7 +42,7 @@ function solveSorting(inputArray) {
     var arr_original = inputArray.toString() ;
     var sortedArray = inputArray;
 
-    nodesort(inputArray, function(err,sortRef) {
+    nodesort(inputArray, displaymode, function(err,sortRef) {
         if (err) {
 	         console.log(err);
 	                }
