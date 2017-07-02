@@ -21,25 +21,8 @@ Sort a large set of floating point numbers which are in range from 0.0 to 1.0 an
  *
  * Author: Pooya Hatami
  ```
-A simple way is to apply a comparison based sorting algorithm. The lower bound for Comparison based sorting algorithm (Merge Sort, Heap Sort, Quick-Sort .. etc) is Ω(n Log n), i.e., they cannot do better than nLogn.
-Can we sort the array in linear time? Counting sort can not be applied here as we use keys as index in counting sort. Here keys are floating point numbers. 
 
-The idea is to use bucket sort. Following is bucket algorithm.
-
-**bucketSort(arr[], n)**
-```
-1) Create n empty buckets (Or lists).
-2) Do following for every array element arr[i].
-.......a) Insert arr[i] into bucket[n*array[i]]
-3) Sort individual buckets using insertion sort.
-4) Concatenate all sorted buckets.
-```
-
-Following diagram (taken from CLRS book) demonstrates working of bucket sort.
-![Bucket Sort](https://raw.githubusercontent.com/pooyahatami/Algorithm-Sort-Bucket/master/img/BucketSort.png)
-
-
-Installation
+## Installation
 
 If you are using a browser, you can download **node-sort-bucket.js** from GitHub or just bellow hotlink to it:
 
@@ -52,7 +35,6 @@ If you are using node, you can install **node-sort-bucket** with npm.
 ```
 npm install node-sort-bucket
 ```
-
 
 ## Usage :
 ```js
@@ -130,6 +112,23 @@ solveSorting(arrin10);
 solveSorting(arrin11);
 solveSorting(arrin12);
 ```
+
+A simple way is to apply a comparison based sorting algorithm. The lower bound for Comparison based sorting algorithm (Merge Sort, Heap Sort, Quick-Sort .. etc) is Ω(n Log n), i.e., they cannot do better than nLogn.
+Can we sort the array in linear time? Counting sort can not be applied here as we use keys as index in counting sort. Here keys are floating point numbers. 
+
+The idea is to use bucket sort. Following is bucket algorithm.
+
+**bucketSort(arr[], n)**
+```
+1) Create n empty buckets (Or lists).
+2) Do following for every array element arr[i].
+.......a) Insert arr[i] into bucket[n*array[i]]
+3) Sort individual buckets using insertion sort.
+4) Concatenate all sorted buckets.
+```
+
+Following diagram (taken from CLRS book) demonstrates working of bucket sort.
+![Bucket Sort](https://raw.githubusercontent.com/pooyahatami/Algorithm-Sort-Bucket/master/img/BucketSort.png)
 
 Following is C++ implementation of the above algorithm.
 ```C
