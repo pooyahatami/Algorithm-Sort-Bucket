@@ -10,14 +10,14 @@ Sort a large set of floating point numbers which are in range from 0.0 to 1.0 an
  * Class	Sorting algorithm
  * Data structure	Array
  * Worst-case performance	O(n^{2}) 
- * Best-case performance	\Omega (n+k) 
- * Average performance	\Theta (n+k) 
+ * Best-case performance	Omega(n+k) 
+ * Average performance	Theta(n+k) 
  * Worst-case space complexity O(n\cdot k)
  *   where n is the size of the input array.
  *   Note: Bucket sort can be seen as a generalization of counting sort; in fact, if each bucket has size 1 then 
  *         bucket sort degenerates to counting sort. The variable bucket size of bucket sort allows it to use O(n) 
  *         memory instead of O(M) memory, where M is the number of distinct values; in exchange, it gives up 
- *         counting sort`s O(n + M) worst-case behavior.
+ *         counting sort s O(n + M) worst-case behavior.
  *
  * Author: Pooya Hatami
  ```
@@ -56,7 +56,7 @@ nodesort(inputArray, displaymode, function(err,sortRef) {
  * Sort Array of integers (Decimal Base 10 , Hex Base 16 , Octal Base 8 , Binary Base 2 ).
  * Array's element shoud be integers and not beager than 999,999 .
  * Returns the Sorted Array or -1 if not found valid input.
- * for waching details of Bucket sort progress use displaymode = "Yes"  
+ * Turn On details of Algorithms progress useing : displaymode = "Yes"  
  ```js
  var displaymode = "No"; //"Yes";
  ```
