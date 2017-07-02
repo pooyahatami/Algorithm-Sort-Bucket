@@ -41,7 +41,9 @@ Following diagram (taken from CLRS book) demonstrates working of bucket sort.
 ## Ruls :
 ```js
 var nodesort = require('./node-sort-bucket');
-nodesort(inputArray, function(err,sortRef) {
+var displaymode = "No"; //"Yes";  // "Yes" for more details of algorithm progress 
+...
+nodesort(inputArray, displaymode, function(err,sortRef) {
         if (err) {
             // TODO error handeling 
             }
@@ -54,6 +56,10 @@ nodesort(inputArray, function(err,sortRef) {
  * Sort Array of integers (Decimal Base 10 , Hex Base 16 , Octal Base 8 , Binary Base 2 ).
  * Array's element shoud be integers and not beager than 999,999 .
  * Returns the Sorted Array or -1 if not found valid input.
+ * for waching details of Bucket sort progress use displaymode = "Yes"  
+ ```js
+ var displaymode = "No"; //"Yes";
+ ```
 
 ## example
 ```js
