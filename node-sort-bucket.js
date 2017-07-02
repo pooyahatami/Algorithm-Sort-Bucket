@@ -3,8 +3,8 @@
  * Class	Sorting algorithm
  * Data structure	Array
  * Worst-case performance	O(n^{2}) 
- * Best-case performance	\Omega (n+k) 
- * Average performance	\Theta (n+k) 
+ * Best-case performance	Omega(n+k) 
+ * Average performance	Theta(n+k) 
  * Worst-case space complexity O(n.k)
  *   where n is the size of the input array.
  *   Note: Bucket sort can be seen as a generalization of counting sort; in fact, if each bucket has size 1 then 
